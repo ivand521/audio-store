@@ -1,0 +1,18 @@
+@media only screen and (max-width: 600px) {
+  .routes {
+    font-size: 0.6em;
+    padding-left: 10px;
+  }
+
+  .cover {
+    height: 60vh;
+  }
+
+  .cover-image {
+    width: 20rem;
+  }
+
+  .greeting {
+    font-size: 1em;
+  }
+}

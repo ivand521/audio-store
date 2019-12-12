@@ -1,0 +1,6 @@
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const UPDATE_LOCAL_STORAGE = 'UPDATE_LOCAL_STORAGE';
+export const SETUP_CART = 'SETUP_CART';
+export const EMPTY_CART = 'EMPTY_CART';

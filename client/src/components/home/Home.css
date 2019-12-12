@@ -1,0 +1,16 @@
+.greeting {
+  text-align: center;
+  color: #7abcff;
+  margin: 0;
+}
+
+.cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.cover-image {
+  width: 30rem;
+}

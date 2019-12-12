@@ -1,0 +1,29 @@
+.navigation {
+  background: #7abcff;
+  /* position: fixed;
+  top: 0;
+  width: 100%; */
+}
+
+.routes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding-left: 30px;
+}
+
+.route {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.right {
+  display: flex;
+}
+
+li {
+  padding-right: 20px;
+}
