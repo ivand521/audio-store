@@ -8,6 +8,7 @@ import ProductPage from './components/products/ProductPage';
 import FAQ from './components/FAQ/FAQ';
 import Cart from './components/cart/Cart';
 import Payment from './components/payment/Payment';
+import ConfirmationPage from './components/payment/ConfirmationPage';
 import './App.css';
 
 import products from './utils/products';
@@ -30,6 +31,7 @@ const App = ({ setupCart }) => {
         <Route path='/faq' component={FAQ} />
         <Route path='/cart' component={Cart} />
         <Route path='/checkout' component={Payment} />
+        <Route path='/confirmation' component={ConfirmationPage} />
 
         {products.map(({ title, route, price, image }) => (
           <Route
