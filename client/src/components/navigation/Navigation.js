@@ -25,8 +25,8 @@ const Navigation = ({ cart }) => {
             </Link>
           </li>
           <li>
-            <Link className='route' to='/faq'>
-              FAQ
+            <Link className='route' to='/about'>
+              About
             </Link>
           </li>
           <li>

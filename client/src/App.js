@@ -5,7 +5,7 @@ import Navigation from './components/navigation/Navigation';
 import Home from './components/home/Home';
 import Products from './components/products/Products';
 import ProductPage from './components/products/ProductPage';
-import FAQ from './components/FAQ/FAQ';
+import About from './components/about/About';
 import Cart from './components/cart/Cart';
 import Payment from './components/payment/Payment';
 import ConfirmationPage from './components/payment/ConfirmationPage';
@@ -28,7 +28,7 @@ const App = ({ setupCart }) => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/products' component={Products} />
-        <Route path='/faq' component={FAQ} />
+        <Route path='/about' component={About} />
         <Route path='/cart' component={Cart} />
         <Route path='/checkout' component={Payment} />
         <Route path='/confirmation' component={ConfirmationPage} />

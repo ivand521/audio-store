@@ -2,14 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { removeFromCart, changeQuantity } from '../../actions/cart';
+import calculateTotal from '../../utils/calculateTotal';
 
 const Cart = ({ cart, removeFromCart, changeQuantity }) => {
   const [total, setTotal] = useState(0);
-
-  const calculateTotal = cart => {
-    const total = cart.reduce((current, item) => current + item.total, 0);
-    setTotal(total);
-  };
 
   const onQuantityChange = e => {
     const title = e.target.name;
@@ -19,7 +15,7 @@ const Cart = ({ cart, removeFromCart, changeQuantity }) => {
   };
 
   useEffect(() => {
-    calculateTotal(cart);
+    setTotal(calculateTotal(cart));
   }, [cart]);
 
   return cart.length ? (
@@ -38,7 +34,7 @@ const Cart = ({ cart, removeFromCart, changeQuantity }) => {
           <button
             onClick={() => {
               removeFromCart(item.title);
-              calculateTotal(cart);
+              setTotal(calculateTotal(cart));
             }}
           >
             Remove

@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import Spinner from './Spinner';
 import {
   CardNumberElement,
   CardExpiryElement,
   CardCVCElement,
   injectStripe
 } from 'react-stripe-elements';
+import Spinner from './Spinner';
 import { emptyCart } from '../../actions/cart';
+import calculateTotal from '../../utils/calculateTotal';
 
 const createOptions = () => {
   return {
@@ -33,7 +34,9 @@ class CheckoutForm extends Component {
   state = {
     errorMessage: '',
     paymentComplete: false,
-    loading: false
+    loading: false,
+    name: '',
+    email: ''
   };
 
   handleChange = ({ error }) => {
@@ -42,12 +45,23 @@ class CheckoutForm extends Component {
     }
   };
 
+  onContactChange = e => {
+    const value = e.target.value;
+    const name = e.target.name;
+    this.setState(() => ({ [name]: value }));
+  };
+
   handleSubmit = async e => {
     e.preventDefault();
     this.setState(() => ({ loading: true }));
+    this.setState(() => ({ subTotal: calculateTotal(this.props.cart) }));
 
     try {
-      const res = await axios.get('/api/stripe');
+      const { name, email } = this.state;
+      const subTotal = calculateTotal(this.props.cart);
+      const body = { name, email, subTotal };
+
+      const res = await axios.post('/api/stripe', body);
       const clientSecret = res.data;
 
       const { paymentIntent } = await this.props.stripe.handleCardPayment(
@@ -61,18 +75,40 @@ class CheckoutForm extends Component {
         this.setState(() => ({ paymentComplete: true }));
       }
     } catch (err) {
+      console.log(this.props.cart);
       console.log(err.message);
     }
   };
 
   render() {
-    return this.state.paymentComplete ? (
+    const { paymentComplete, name, email, loading, errorMessage } = this.state;
+    return paymentComplete ? (
       <Redirect to='/confirmation' />
     ) : (
       <div>
-        {this.state.loading && <Spinner />}
+        {loading && <Spinner />}
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className='split-form'>
+            <label>
+              Name{' '}
+              <input
+                type='text'
+                name='name'
+                value={name}
+                onChange={this.onContactChange}
+                required
+              />
+            </label>
+            <label>
+              Email{' '}
+              <input
+                type='email'
+                name='email'
+                value={email}
+                onChange={this.onContactChange}
+                required
+              />
+            </label>
             <label>
               Card number
               <CardNumberElement
@@ -108,7 +144,7 @@ class CheckoutForm extends Component {
             </label>
           </div>
           <div className='error' role='alert'>
-            {this.state.errorMessage}
+            {errorMessage}
           </div>
           <button>Pay</button>
         </form>
@@ -117,4 +153,10 @@ class CheckoutForm extends Component {
   }
 }
 
-export default connect(null, { emptyCart })(injectStripe(CheckoutForm));
+const mapStateToProps = ({ cart }) => ({
+  cart
+});
+
+export default connect(mapStateToProps, { emptyCart })(
+  injectStripe(CheckoutForm)
+);
