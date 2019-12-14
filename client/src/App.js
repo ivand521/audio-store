@@ -33,12 +33,17 @@ const App = ({ setupCart }) => {
         <Route path='/checkout' component={Payment} />
         <Route path='/confirmation' component={ConfirmationPage} />
 
-        {products.map(({ title, route, price, image }) => (
+        {products.map(({ title, route, price, image, description }) => (
           <Route
             key={title}
             path={`/${route}`}
             render={() => (
-              <ProductPage image={image} title={title} price={price} />
+              <ProductPage
+                image={image}
+                title={title}
+                price={price}
+                description={description}
+              />
             )}
           />
         ))}

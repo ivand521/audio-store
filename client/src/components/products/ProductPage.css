@@ -1,4 +1,16 @@
 .info-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.product-image {
+  width: 22rem;
+  margin: 2rem;
+  height: auto;
+}
+
+.product-information {
+  width: 24rem;
 }

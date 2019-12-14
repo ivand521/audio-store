@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { addToCart } from '../../actions/cart';
 import './ProductPage.css';
 
-const ProductPage = ({ image, title, price, addToCart }) => {
+const ProductPage = ({ image, title, price, description, addToCart }) => {
   return (
     <div className='info-container'>
       <div>
-        <img src={image} alt={title} />
+        <img className='product-image' src={image} alt={title} />
       </div>
-      <div>
-        <p>
-          {title}--{price}
-        </p>
+      <div className='information product-information'>
+        <h2>
+          {title} -${price}
+        </h2>
         <button
           onClick={() => {
             addToCart(title, price);
@@ -20,6 +20,7 @@ const ProductPage = ({ image, title, price, addToCart }) => {
         >
           Add To Cart
         </button>
+        <p className='text'>{description}</p>
       </div>
     </div>
   );

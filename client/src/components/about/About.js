@@ -1,10 +1,11 @@
 import React from 'react';
+import './About.css';
 
 const About = props => {
   return (
-    <div>
+    <div className='information'>
       <h1>About</h1>
-      <p>
+      <p className='text'>
         Subliminal Audio Store offers subliminal programs that help you utilize
         the power of your subconscious mind. Our audio contains positive
         messages that will reprogram your mind and improve the quality of your
