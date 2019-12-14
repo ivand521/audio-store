@@ -13,7 +13,7 @@ body {
 
 @media only screen and (max-width: 600px) {
   h1 {
-    font-size: ;
+    font-size: 1.5rem;
   }
 
   .routes {

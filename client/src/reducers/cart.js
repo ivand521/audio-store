@@ -24,7 +24,11 @@ export default function(state = initialState, action) {
 
           const quantity = product.quantity + payload.quantity;
           const price = product.price;
-          return { ...payload, quantity, total: price * quantity };
+          return {
+            ...payload,
+            quantity,
+            total: +(price * quantity).toFixed(2)
+          };
         });
       }
       return [...state, payload];
@@ -36,7 +40,7 @@ export default function(state = initialState, action) {
         const quantity = payload.quantity;
         const price = product.price;
 
-        return { ...product, quantity, total: price * quantity };
+        return { ...product, quantity, total: +(price * quantity).toFixed(2) };
       });
     case REMOVE_FROM_CART:
       return state.filter(item => item.title !== payload.title);

@@ -1,4 +1,5 @@
-import file from './img/files_2.png';
+import sleep from './img/sleep.png';
+import relax from './img/relax.png';
 
 const products = [
   {
@@ -7,7 +8,7 @@ const products = [
     description:
       'This audio will help you overcome insomania and sleep restfully everynight. Play it overnight as you go to sleep.',
     route: 'sleepbetter',
-    image: file
+    image: sleep
   },
   {
     title: 'Stress Relief',
@@ -15,7 +16,7 @@ const products = [
     description:
       'This audio contains powerful messages to help you relax your body and mind. It will help you reduce stress and worry.',
     route: 'stressrelief',
-    image: file
+    image: relax
   }
 ];
 
