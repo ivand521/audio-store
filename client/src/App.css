@@ -7,6 +7,9 @@ body {
 
 button {
   cursor: pointer;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  outline: none;
 }
 
 .information {
@@ -19,6 +22,7 @@ button {
   color: #ffffff;
   padding: 0.5rem;
   font-size: 1rem;
+  border-radius: 0.3rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -57,7 +61,13 @@ button {
     /* border: 1px solid silver; */
   }
 
-  .cart {
+  .cart,
+  .form-container {
     width: 80vw;
+  }
+
+  .cart button {
+    height: 60%;
+    width: auto;
   }
 }

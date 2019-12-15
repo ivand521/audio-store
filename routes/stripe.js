@@ -6,7 +6,6 @@ const router = new express.Router();
 router.post('/api/stripe', async (req, res) => {
   try {
     const { email, subTotal } = req.body;
-    console.log(req.body);
 
     const amount = subTotal * 100;
 

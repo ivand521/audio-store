@@ -25,6 +25,8 @@ class CheckoutForm extends Component {
   handleChange = ({ error }) => {
     if (error) {
       this.setState({ errorMessage: error.message });
+    } else {
+      this.setState({ errorMessage: '' });
     }
   };
 
@@ -36,6 +38,11 @@ class CheckoutForm extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+
+    if (this.state.errorMessage || this.state.loading) {
+      return;
+    }
+
     this.setState(() => ({ loading: true }));
     this.setState(() => ({ subTotal: calculateTotal(this.props.cart) }));
 
@@ -66,59 +73,76 @@ class CheckoutForm extends Component {
     return paymentComplete ? (
       <Redirect to='/confirmation' />
     ) : (
-      <div className='form-container'>
+      <div className='flex-wrapper'>
         {loading && <Spinner />}
-        <h3>Complete Your Purchase</h3>
-        <div className='wrapper'>
-          {' '}
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <div>
-              <label>
-                Name{' '}
-                <input
-                  type='text'
-                  name='name'
-                  value={name}
-                  onChange={this.onContactChange}
-                  required
-                />
-              </label>
+
+        <div className='form-container'>
+          <h1 className='checkout-title'>Complete Your Purchase</h1>{' '}
+          <form
+            className='checkout-form'
+            onSubmit={this.handleSubmit.bind(this)}
+          >
+            <div className='column-span'>
+              <label>Name </label>
             </div>
-            <div>
-              <label>
-                Email{' '}
-                <input
-                  type='email'
-                  name='email'
-                  value={email}
-                  onChange={this.onContactChange}
-                  required
-                />
-              </label>
+
+            <div className='column-span'>
+              <input
+                className='input-span checkout-input'
+                type='text'
+                name='name'
+                value={name}
+                onChange={this.onContactChange}
+                required
+              />
             </div>
-            <div>
-              <label>
-                Card number
-                <CardNumberElement onChange={this.handleChange} />
-              </label>
+
+            <div className='column-span'>
+              <label>Email </label>
             </div>
-            <div>
-              <label>
-                Expiration date
-                <CardExpiryElement onChange={this.handleChange} />
-              </label>
+
+            <div className='column-span'>
+              <input
+                className='input-span checkout-input'
+                type='email'
+                name='email'
+                value={email}
+                onChange={this.onContactChange}
+                required
+              />
             </div>
-            <div>
-              <label>
-                CVC
-                <CardCVCElement onChange={this.handleChange} />
-              </label>
+
+            <div className='column-span'>
+              <label>Card number</label>
+            </div>
+
+            <div className='column-span'>
+              <CardNumberElement
+                className='checkout-input input-span'
+                onChange={this.handleChange}
+              />
             </div>
 
             <div>
+              <label>Expiration date</label>
+              <CardExpiryElement
+                className='checkout-input expiration'
+                onChange={this.handleChange}
+              />
+            </div>
+            <div>
+              <label>CVC</label>
+              <CardCVCElement
+                className='checkout-input'
+                onChange={this.handleChange}
+              />
+            </div>
+
+            {/* <div>
               <label>
                 Postal code
                 <input
+                  className='checkout-input'
                   name='name'
                   type='text'
                   placeholder='94115'
@@ -126,13 +150,13 @@ class CheckoutForm extends Component {
                   required
                 />
               </label>
-            </div>
+            </div> */}
 
-            <div className='error' role='alert'>
+            <div className='error column-span' role='alert'>
               {errorMessage}
             </div>
-            <div>
-              <button>Pay</button>
+            <div className='column-span'>
+              <button className='checkout-button'>Pay</button>
             </div>
           </form>
         </div>
