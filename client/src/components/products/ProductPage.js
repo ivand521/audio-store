@@ -14,6 +14,7 @@ const ProductPage = ({ image, title, price, description, addToCart }) => {
           {title} -${price}
         </h2>
         <button
+          className='dark-button'
           onClick={() => {
             addToCart(title, price);
           }}

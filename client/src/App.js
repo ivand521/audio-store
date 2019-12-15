@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import Products from './components/products/Products';
 import ProductPage from './components/products/ProductPage';
 import About from './components/about/About';
+import Contact from './components/contact/Contact';
 import Cart from './components/cart/Cart';
 import Payment from './components/payment/Payment';
 import ConfirmationPage from './components/payment/ConfirmationPage';
@@ -29,6 +30,7 @@ const App = ({ setupCart }) => {
         <Route exact path='/' component={Home} />
         <Route path='/products' component={Products} />
         <Route path='/about' component={About} />
+        <Route path='/contact' components={Contact} />
         <Route path='/cart' component={Cart} />
         <Route path='/checkout' component={Payment} />
         <Route path='/confirmation' component={ConfirmationPage} />

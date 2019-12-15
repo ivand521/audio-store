@@ -32,7 +32,7 @@ const Navigation = ({ cart }) => {
           <li>
             <Link className='route' to='/cart'>
               Cart{' '}
-              <span style={{ color: 'green' }}>
+              <span style={{ color: '#cccccc' }}>
                 {cart.length ? calculateTotalItems() : ''}
               </span>
             </Link>

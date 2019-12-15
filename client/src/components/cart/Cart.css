@@ -1,4 +1,23 @@
-.item {
+.cart-container {
   display: flex;
+  height: 50vh;
   justify-content: center;
+  align-items: center;
+}
+
+.cart {
+  width: 40vw;
+}
+
+.cart div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.cart button {
+  color: #ffffff;
+  background: #808080;
+  font-size: 1rem;
+  height: 80%;
+  width: 80%;
 }

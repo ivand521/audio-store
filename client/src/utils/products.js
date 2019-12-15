@@ -14,7 +14,7 @@ const products = [
     title: 'Stress Relief',
     price: 4.99,
     description:
-      'This audio contains powerful messages to help you relax your body and mind. It will help you reduce stress and worry.',
+      'This audio contains subliminal messages to help you relax your body and mind. It will help you reduce stress and worry.',
     route: 'stressrelief',
     image: relax
   }

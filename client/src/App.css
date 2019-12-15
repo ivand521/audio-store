@@ -1,14 +1,24 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  cursor: pointer;
+}
+
 .information {
   margin: 0 2.5rem;
+}
+
+.dark-button {
+  text-decoration: none;
+  background: #485e74;
+  color: #ffffff;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -45,5 +55,9 @@ body {
   .text {
     font-size: 0.9rem;
     /* border: 1px solid silver; */
+  }
+
+  .cart {
+    width: 80vw;
   }
 }

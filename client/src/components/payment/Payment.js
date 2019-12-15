@@ -6,7 +6,6 @@ const Payment = () => {
   return (
     <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
       <div className='example'>
-        <h1>Complete Your Purchase</h1>
         <Elements>
           <CheckoutForm />
         </Elements>

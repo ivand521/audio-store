@@ -9,26 +9,9 @@ import {
   injectStripe
 } from 'react-stripe-elements';
 import Spinner from './Spinner';
+import './CheckoutForm.css';
 import { emptyCart } from '../../actions/cart';
 import calculateTotal from '../../utils/calculateTotal';
-
-const createOptions = () => {
-  return {
-    style: {
-      base: {
-        fontSize: '16px',
-        color: '#424770',
-        letterSpacing: '0.025em',
-        '::placeholder': {
-          color: '#aab7c4'
-        }
-      },
-      invalid: {
-        color: '#c23d4b'
-      }
-    }
-  };
-};
 
 class CheckoutForm extends Component {
   state = {
@@ -68,14 +51,12 @@ class CheckoutForm extends Component {
         `${clientSecret}`,
         <CardNumberElement />
       );
-      console.log(paymentIntent);
 
       if (paymentIntent.status === 'succeeded') {
         this.props.emptyCart();
         this.setState(() => ({ paymentComplete: true }));
       }
     } catch (err) {
-      console.log(this.props.cart);
       console.log(err.message);
     }
   };
@@ -85,69 +66,76 @@ class CheckoutForm extends Component {
     return paymentComplete ? (
       <Redirect to='/confirmation' />
     ) : (
-      <div>
+      <div className='form-container'>
         {loading && <Spinner />}
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <div className='split-form'>
-            <label>
-              Name{' '}
-              <input
-                type='text'
-                name='name'
-                value={name}
-                onChange={this.onContactChange}
-                required
-              />
-            </label>
-            <label>
-              Email{' '}
-              <input
-                type='email'
-                name='email'
-                value={email}
-                onChange={this.onContactChange}
-                required
-              />
-            </label>
-            <label>
-              Card number
-              <CardNumberElement
-                {...createOptions()}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              Expiration date
-              <CardExpiryElement
-                {...createOptions()}
-                onChange={this.handleChange}
-              />
-            </label>
-          </div>
-          <div className='split-form'>
-            <label>
-              CVC
-              <CardCVCElement
-                {...createOptions()}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              Postal code
-              <input
-                name='name'
-                type='text'
-                placeholder='94115'
-                className='StripeElement'
-                required
-              />
-            </label>
-          </div>
-          <div className='error' role='alert'>
-            {errorMessage}
-          </div>
-          <button>Pay</button>
-        </form>
+        <h3>Complete Your Purchase</h3>
+        <div className='wrapper'>
+          {' '}
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <div>
+              <label>
+                Name{' '}
+                <input
+                  type='text'
+                  name='name'
+                  value={name}
+                  onChange={this.onContactChange}
+                  required
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Email{' '}
+                <input
+                  type='email'
+                  name='email'
+                  value={email}
+                  onChange={this.onContactChange}
+                  required
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Card number
+                <CardNumberElement onChange={this.handleChange} />
+              </label>
+            </div>
+            <div>
+              <label>
+                Expiration date
+                <CardExpiryElement onChange={this.handleChange} />
+              </label>
+            </div>
+            <div>
+              <label>
+                CVC
+                <CardCVCElement onChange={this.handleChange} />
+              </label>
+            </div>
+
+            <div>
+              <label>
+                Postal code
+                <input
+                  name='name'
+                  type='text'
+                  placeholder='94115'
+                  className='StripeElement'
+                  required
+                />
+              </label>
+            </div>
+
+            <div className='error' role='alert'>
+              {errorMessage}
+            </div>
+            <div>
+              <button>Pay</button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
