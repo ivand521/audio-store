@@ -16,7 +16,9 @@
   "dependencies": {
     "concurrently": "^5.0.1",
     "express": "^4.17.1",
+    "fetch": "^1.1.0",
     "mongoose": "^5.8.0",
+    "node": "^13.3.0",
     "nodemon": "^2.0.2",
     "stripe": "^7.14.0"
   }
