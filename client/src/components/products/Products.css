@@ -10,22 +10,12 @@
 }
 
 .box {
-  /* padding: 130px; */
   margin: 30px;
-  /* border-radius: 4px;
-  border: 1px solid #bbb;
-  transition: all 0.3s linear; */
-
 }
 
 .products-heading {
   text-align: center;
 }
-
-/* .price-tag {
-  display: flex;
-  justify-content: space-between;
-} */
 
 .title {
   margin-bottom: 0;
